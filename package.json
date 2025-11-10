@@ -4,12 +4,21 @@
   "description": "IoTUeli node.js sample for connecting to u-OS Data Hub via NATS",
   "type": "module",
   "scripts": {
-    "provider": "node provider.js",
-    "consumer": "node consumer.js"
+    "build": "tsc",
+    "provider": "npm run build && node dist/provider.js",
+    "consumer": "npm run build && node dist/consumer.js",
+    "dev:provider": "ts-node src/provider.ts",
+    "dev:consumer": "ts-node src/consumer.ts"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
+    "flatbuffers": "^25.9.23",
     "nats": "^2.19.0",
     "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3"
   }
 }

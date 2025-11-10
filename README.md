@@ -10,9 +10,9 @@ cp .env.example .env
 npm install
 ```
 
-Trage in `.env` die IP/Port deines u-OS Geräts sowie die OAuth-Credentials ein. Die Werte findest du im u-OS Control Center unter **Identity & access → Clients → Add client** (siehe Screenshot im Python-README).
+`npm install` generiert `node_modules/` und kompiliert den FlatBuffer-Code in `src/fbs`. Trage anschließend in `.env` Host/IP, Port und OAuth-Credentials ein. Die Werte findest du im u-OS Control Center unter **Identity & access → Clients → Add client** (siehe Screenshot im Python-README).
 
-> Hinweis: Wie im Python-Projekt deaktiviert `auth.js` standardmäßig die TLS-Zertifikatsprüfung (self-signed). Für produktive Umgebungen solltest du stattdessen das echte Zertifikat installieren und `NODE_TLS_REJECT_UNAUTHORIZED` wieder aktivieren.
+> Wie im Python-Projekt deaktiviert `auth.ts` standardmäßig die TLS-Zertifikatsprüfung (self-signed). Für produktive Umgebungen solltest du das echte Zertifikat installieren und `NODE_TLS_REJECT_UNAUTHORIZED` wieder aktivieren.
 
 ## Provider starten
 
@@ -22,7 +22,7 @@ npm run provider
 
 - Holt automatisch ein OAuth-Token
 - Stellt eine NATS-Verbindung (`token`-Auth) her
-- Schickt im Sekundentakt Temperaturwerte als JSON auf das in `.env` konfigurierte Subject
+- Publiziert Providerdefinition + Variablenänderungen auf den offiziellen u-OS Subjects (`v1.loc.<provider>.def/vars.…`)
 
 ## Consumer starten
 
@@ -31,10 +31,10 @@ npm run consumer
 ```
 
 - Holt ebenfalls ein OAuth-Token
-- Abonniert das gleiche Subject und loggt jede Nachricht
+- Fragt über `v1.loc.<provider>.vars.qry.read` einen Snapshot ab und lauscht danach auf `…vars.evt.changed`
 
 ## Tipps
 
-- Für mehrere Provider kannst du einfach mehrere `.env`-Dateien mit unterschiedlichen `PROVIDER_ID`/`NATS_SUBJECT` anlegen.
-- Falls du lieber Klartext-Token verwenden willst, kannst du optional `NATS_TOKEN=<token>` in `.env` hinterlegen und den OAuth-Request in `auth.js` überspringen.
-- Das Sample ist modular geschrieben – du kannst `auth.js`, `config.js` oder die Publish-Logik problemlos in dein eigenes Projekt übernehmen.
+- Für mehrere Provider kannst du mehrere `.env`-Dateien mit unterschiedlichen `PROVIDER_ID`/`CLIENT_*`-Werten anlegen.
+- Wenn du anstelle von OAuth ein festes Token verwenden willst, kannst du `NATS_TOKEN=<token>` ergänzen und den Request in `auth.ts` entsprechend anpassen.
+- Die komplette Provider-/Consumer-Logik ist in TypeScript umgesetzt und orientiert sich am Python-Sample – Feel free to reuse die Module (`payloads.ts`, `simulation.ts`, …) in deinem eigenen Projekt.
