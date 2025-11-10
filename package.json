@@ -1,0 +1,15 @@
+{
+  "name": "nats-node-sample",
+  "version": "1.0.0",
+  "description": "IoTUeli node.js sample for connecting to u-OS Data Hub via NATS",
+  "type": "module",
+  "scripts": {
+    "provider": "node provider.js",
+    "consumer": "node consumer.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "nats": "^2.19.0",
+    "node-fetch": "^3.3.2"
+  }
+}
