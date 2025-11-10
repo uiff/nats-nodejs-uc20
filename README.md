@@ -12,6 +12,8 @@ npm install
 
 Trage in `.env` die IP/Port deines u-OS Geräts sowie die OAuth-Credentials ein. Die Werte findest du im u-OS Control Center unter **Identity & access → Clients → Add client** (siehe Screenshot im Python-README).
 
+> Hinweis: Wie im Python-Projekt deaktiviert `auth.js` standardmäßig die TLS-Zertifikatsprüfung (self-signed). Für produktive Umgebungen solltest du stattdessen das echte Zertifikat installieren und `NODE_TLS_REJECT_UNAUTHORIZED` wieder aktivieren.
+
 ## Provider starten
 
 ```bash

@@ -1,6 +1,12 @@
 import fetch from 'node-fetch';
 import { CLIENT_ID, CLIENT_SECRET, TOKEN_ENDPOINT, TOKEN_SCOPE } from './config.js';
 
+// Match the Python sample behaviour: ignore self-signed certs during local testing.
+// For production deployments, replace this with a proper CA certificate.
+if (!process.env.NODE_TLS_REJECT_UNAUTHORIZED) {
+  process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+}
+
 export async function requestToken() {
   const body = new URLSearchParams({
     grant_type: 'client_credentials',
