@@ -10,7 +10,7 @@ cp .env.example .env
 npm install
 ```
 
-`npm install` generiert `node_modules/` und kompiliert den FlatBuffer-Code in `src/fbs`. Trage anschließend in `.env` Host/IP, Port und OAuth-Credentials ein. Die Werte findest du im u-OS Control Center unter **Identity & access → Clients → Add client** (siehe Screenshot im Python-README).
+`npm install` generiert `node_modules/` und kompiliert den FlatBuffer-Code in `src/fbs`. Trage anschließend in `.env` Host/IP, Port und OAuth-Credentials ein. Die Werte findest du im u-OS Control Center unter **Identity & access → Clients → Add client** (siehe Screenshot im Python-README). Gib dem Client sowohl **Provide** als auch **Read & write** Rechte, damit er die offiziellen Subjects verwenden darf.
 
 > Wie im Python-Projekt deaktiviert `auth.ts` standardmäßig die TLS-Zertifikatsprüfung (self-signed). Für produktive Umgebungen solltest du das echte Zertifikat installieren und `NODE_TLS_REJECT_UNAUTHORIZED` wieder aktivieren.
 
@@ -20,8 +20,8 @@ npm install
 npm run provider
 ```
 
-- Holt automatisch ein OAuth-Token
-- Stellt eine NATS-Verbindung (`token`-Auth) her
+- Holt automatisch ein OAuth-Token (Scope `hub.variables.provide hub.variables.readwrite`)
+- Stellt eine NATS-Verbindung (`token`-Auth, Inbox `_INBOX.<Client>`) her
 - Publiziert Providerdefinition + Variablenänderungen auf den offiziellen u-OS Subjects (`v1.loc.<provider>.def/vars.…`)
 
 ## Consumer starten

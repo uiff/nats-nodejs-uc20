@@ -22,6 +22,7 @@ async function main() {
     servers: NATS_SERVER.split(','),
     token,
     name: `${CLIENT_NAME}-node-provider`,
+    inboxPrefix: `_INBOX.${CLIENT_NAME}`,
   });
   console.log('[provider] NATS verbunden:', nc.getServer());
 
