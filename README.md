@@ -2,6 +2,15 @@
 
 Dieses Sample zeigt, wie du aus Node.js heraus einen simplen Provider und Consumer für den u-OS Data Hub aufsetzt. Die Messages sind JSON-basiert und dienen als leichtgewichtige Alternative zu den umfangreichen FlatBuffer-Beispielen aus dem Python-Sample.
 
+## Voraussetzungen
+
+1. **OAuth-Clients anlegen**: Im u-OS Control Center (Screenshot siehe `docs/control-center-clients.png`) zu *Identity & access → Clients → Add client* wechseln und oben rechts auf **Add client** drücken.
+   - **Provider** `sampleprovider`: Access `hub.variables` → Rolle **Provide**
+   - **Consumer** `sampleconsumer`: Access `hub.variables` → Rolle **ReadWrite** (oder Read)
+   - Die zugehörigen Client ID & Secrets notieren.
+
+![Control Center Workflow](doc/IoTUeli-u-OS.gif)
+
 ## Setup
 
 ```bash
