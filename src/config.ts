@@ -7,7 +7,8 @@ export const PROVIDER_ID = process.env.PROVIDER_ID ?? 'sampleprovider';
 export const CLIENT_NAME = process.env.CLIENT_NAME ?? 'sampleprovider';
 export const CLIENT_ID = process.env.CLIENT_ID ?? '';
 export const CLIENT_SECRET = process.env.CLIENT_SECRET ?? '';
-export const TOKEN_SCOPE = process.env.TOKEN_SCOPE ?? 'hub.variables.readwrite';
+export const TOKEN_SCOPE =
+  process.env.TOKEN_SCOPE ?? 'hub.variables.provide hub.variables.readwrite';
 export const TOKEN_ENDPOINT = process.env.TOKEN_ENDPOINT ?? `https://${HUB_HOST}/oauth2/token`;
 export const PUBLISH_INTERVAL_MS = Number(process.env.PUBLISH_INTERVAL_MS ?? 1000);
 export const NATS_SERVER = process.env.NATS_SERVER ?? `nats://${HUB_HOST}:${HUB_PORT}`;

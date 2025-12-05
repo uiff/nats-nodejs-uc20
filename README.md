@@ -47,7 +47,8 @@ cp .env.example .env
 npm install
 ```
 
-> Das Projekt ist auf einem Entwicklungsrechner und direkt auf der u-OS-Steuerung lauffähig. Falls du es auf dem Gerät ausführst, genügt als Host später `127.0.0.1`.
+> Passe anschließend **.env** an (insbesondere `HUB_HOST`, `PROVIDER_ID`, `CLIENT_*`).  
+> Das Projekt ist auf einem Entwicklungsrechner und direkt auf der u-OS-Steuerung lauffähig. Falls du es auf dem Gerät ausführst, genügt als Host `127.0.0.1`.
 
 ---
 
