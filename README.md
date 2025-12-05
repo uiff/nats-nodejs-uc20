@@ -9,7 +9,7 @@ Dieses Sample zeigt, wie du aus Node.js heraus einen simplen Provider und Consum
    - **Consumer** `sampleconsumer`: Access `hub.variables` → Rolle **ReadWrite** (oder Read)
    - Die zugehörigen Client ID & Secrets notieren.
 
-![Control Center Workflow](doc/IoTUeli-u-OS.gif)
+![Control Center Workflow](doc/IoTUeli-u-OS.gif?raw=true)
 
 ## Setup
 
@@ -33,7 +33,7 @@ npm run provider
 - Stellt eine NATS-Verbindung (`token`-Auth, Inbox `_INBOX.<Client>`) her
 - Publiziert Providerdefinition + Variablenänderungen auf den offiziellen u-OS Subjects (`v1.loc.<provider>.def/vars.…`)
 
-![Data Hub Ansicht](doc/IoTUeli-Datahub.gif)
+![Data Hub Ansicht](doc/IoTUeli-Datahub.gif?raw=true)
 
 ## Consumer starten
 
