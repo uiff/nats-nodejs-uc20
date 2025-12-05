@@ -33,6 +33,8 @@ npm run provider
 - Stellt eine NATS-Verbindung (`token`-Auth, Inbox `_INBOX.<Client>`) her
 - Publiziert Providerdefinition + Variablenänderungen auf den offiziellen u-OS Subjects (`v1.loc.<provider>.def/vars.…`)
 
+![Data Hub Ansicht](doc/IoTUeli-Datahub.gif)
+
 ## Consumer starten
 
 ```bash
