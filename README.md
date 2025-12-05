@@ -111,4 +111,25 @@ Auf einem u-OS-Gerät kannst du damit sofort prüfen, ob deine Variablen im Data
 
 ---
 
+## 8. Docker (optional)
+
+```bash
+docker build -t nats-node-sample .
+docker run --rm -it --network host \
+  -e HUB_HOST=192.168.10.100 \
+  -e PROVIDER_ID=sampleprovider \
+  -e CLIENT_NAME=sampleprovider \
+  -e CLIENT_ID=<DEINE_ID> \
+  -e CLIENT_SECRET=<DEIN_SECRET> \
+  -e TOKEN_SCOPE="hub.variables.provide hub.variables.readwrite" \
+  nats-node-sample
+```
+
+- Das Image baut TypeScript bereits im Build-Step (`dist/` wird kopiert).  
+- Standardmäßig startet der Container den Provider; du kannst den Befehl überschreiben, um z. B. den Consumer zu starten:
+  ```bash
+  docker run --rm -it --network host nats-node-sample node dist/consumer.js
+  ```
+- `--network host` ist praktisch, wenn der NATS-Server auf der gleichen Steuerung läuft. Andernfalls kannst du `HUB_HOST` auf eine IP setzen, die vom Container erreichbar ist.
+
 Viel Erfolg! Das Projekt ist bewusst minimal gehalten – passe die Simulation (`src/simulation.ts`) oder die Payloads (`src/payloads.ts`) an deine Bedürfnisse an und deploye sie anschließend über deinen bevorzugten Weg (Node direkt, Docker, PM2 …). Wenn du Fragen hast, melde dich gern. 🙂
