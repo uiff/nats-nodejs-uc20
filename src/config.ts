@@ -22,12 +22,8 @@ if (!CLIENT_ID || !CLIENT_SECRET) {
 }
 
 export const VARIABLE_DEFINITIONS: VariableDefinitionModel[] = [
-  { id: 1, key: 'digital_nameplate.manufacturer_name', dataType: 'STRING', access: 'READ_ONLY' },
-  { id: 2, key: 'digital_nameplate.serial_number', dataType: 'STRING', access: 'READ_ONLY' },
-  { id: 3, key: 'digital_nameplate.year_of_construction', dataType: 'INT64', access: 'READ_ONLY' },
-  { id: 4, key: 'digital_nameplate.hardware_version', dataType: 'STRING', access: 'READ_ONLY' },
   { id: 5, key: 'diagnostics.status_text', dataType: 'STRING', access: 'READ_WRITE' },
   { id: 6, key: 'diagnostics.error_count', dataType: 'INT64', access: 'READ_WRITE' },
   { id: 7, key: 'diagnostics.temperature', dataType: 'FLOAT64', access: 'READ_ONLY' },
-  { id: 8, key: 'diagnostics.is_running', dataType: 'BOOLEAN', access: 'READ_WRITE' }
+  { id: 8, key: 'diagnostics.is_running', dataType: 'BOOLEAN', access: 'READ_WRITE' },
 ];
